@@ -78,11 +78,8 @@ app.post("/repositories/:id/like", validateRepositoryId, (req, res) => {
     return res.status(400).json({ error: 'Repository not found.'})
   }
   
-  const repository = {
-    id,
-    title: repositories[repositoryIndex].title,
-    url: repositories[repositoryIndex].url,
-    techs: repositories[repositoryIndex].techs,
+  const repository = { 
+    ...repositories[repositoryIndex],
     likes: repositories[repositoryIndex].likes + addLike
   }
   
